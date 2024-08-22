@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LSS Einsatznummern in Einsatzliste
-// @version      1.0
+// @version      1.1
 // @description  Fügt Einsatznummern in die Einsatzliste ein.
 // @author       MissSobol
 // @match        https://www.operacni-stredisko.cz/
@@ -60,14 +60,14 @@
             if (captionElement && !captionElement.textContent.includes(missionId)) {
                 // Füge die Einsatznummer in die Beschriftung hinzu, wenn sie noch nicht vorhanden ist
                 captionElement.textContent += ` [${missionId}]`;
-                console.log(`Einsatznummer ${missionId} hinzugefügt.`);
+                //console.log(`Einsatznummer ${missionId} hinzugefügt.`);
             }
 
             // Füge die Einsatznummer zum Suchattribut hinzu, falls noch nicht vorhanden
             let searchAttribute = mission.getAttribute('search_attribute');
             if (searchAttribute && !searchAttribute.includes(missionId)) {
                 mission.setAttribute('search_attribute', searchAttribute + ' ' + missionId);
-                console.log(`Einsatznummer ${missionId} zum Suchattribut hinzugefügt.`);
+                //console.log(`Einsatznummer ${missionId} zum Suchattribut hinzugefügt.`);
             }
         });
     }
