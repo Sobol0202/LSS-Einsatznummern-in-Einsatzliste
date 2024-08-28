@@ -59,7 +59,7 @@
 
             // Prüfe, ob das Mission Caption Element existiert
             if (captionElement) {
-                // Prüfe, ob ein <s>-Tag (durchgestrichener Text) existiert und hol dir den gesamten Inhalt der Kachel
+                // Prüfen, ob ein durchgestrichener Text existiert und hol den gesamten Inhalt der Kachel
                 let originalCaptionHTML = captionElement.innerHTML;
 
                 // Überprüfen, ob die Einsatznummer bereits hinzugefügt wurde
