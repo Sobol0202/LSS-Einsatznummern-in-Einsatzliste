@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         LSS Einsatznummern in Einsatzliste
-// @version      1.1
+// @version      1.3
 // @description  Fügt Einsatznummern in die Einsatzliste ein.
 // @author       MissSobol
 // @match        https://www.operacni-stredisko.cz/
@@ -57,10 +57,17 @@
             // Hole das Caption-Element
             let captionElement = mission.querySelector(`#mission_caption_${missionId}`);
 
-            if (captionElement && !captionElement.textContent.includes(missionId)) {
-                // Füge die Einsatznummer in die Beschriftung hinzu, wenn sie noch nicht vorhanden ist
-                captionElement.textContent += ` [${missionId}]`;
-                //console.log(`Einsatznummer ${missionId} hinzugefügt.`);
+            // Prüfe, ob das Mission Caption Element existiert
+            if (captionElement) {
+                // Prüfe, ob ein <s>-Tag (durchgestrichener Text) existiert und hol dir den gesamten Inhalt der Kachel
+                let originalCaptionHTML = captionElement.innerHTML;
+
+                // Überprüfen, ob die Einsatznummer bereits hinzugefügt wurde
+                if (!originalCaptionHTML.includes(`[${missionId}]`)) {
+                    // Einsatznummer hinter die letzte Caption hinzufügen
+                    captionElement.innerHTML += ` [${missionId}]`;
+                    //console.log(`Einsatznummer ${missionId} hinzugefügt.`);
+                }
             }
 
             // Füge die Einsatznummer zum Suchattribut hinzu, falls noch nicht vorhanden
